@@ -6,7 +6,7 @@ DATASET_ROOT = "/Users/neo/Downloads/deeper_civilizer/BenchmarkDatasets/"
 #Note: This contains also the label data!
 CANDSET_IDS_FILE_NAME = "candset_ids_only.csv"
 
-#TODO: Change me
+#TODO: Change me 
 CANDSET_FILE_NAME = "candset.pkl.compress"
 
 #Size of distributed representations
