@@ -11,7 +11,7 @@ import pandas as pd
 import numpy as np
 
 from nltk.corpus import stopwords
-import fastText
+import fasttext
 from scipy.spatial.distance import cosine
 import torch
 
@@ -63,7 +63,7 @@ def verify_split(df, train_df, validation_df, test_df, split_ratio, label_field_
         expected_duplicates, expected_non_duplicates = int(num_duplicates_df * split_ratio[index]), int(num_non_duplicates_df * split_ratio[index])
         actual_duplicates, actual_non_duplicates = num_partition_duplicates, num_partition_non_duplicates
         if actual_duplicates != expected_duplicates or actual_non_duplicates != expected_non_duplicates:
-            print "Mismatch :", expected_duplicates, actual_duplicates, expected_non_duplicates, actual_non_duplicates
+            print ("Mismatch :", expected_duplicates, actual_duplicates, expected_non_duplicates, actual_non_duplicates)
 
 #Given a set of (ltable_id, rtable_id, gold) triples,
 # construct the distributional similarity vector and store it
@@ -164,11 +164,11 @@ def compute_dist_similarity_matrix_wrapper(dataset_name, train_file_name="train.
     #dataset_to_matrix("/Users/neo/Desktop/QCRI/DataCleaning/datasets/BenchmarkDatasets/Fodors_Zagat/", "candset_ids_only.csv", "fodors.csv", "zagats.csv")
     #dataset_to_matrix(folder, "candset_ids_only.csv", ltable_file, rtable_file)
 
-    print "Processing ", dataset_name, train_file_name
+    print ("Processing ", dataset_name, train_file_name)
     dataset_to_matrix(folder, train_file_name, ltable_file_name, rtable_file_name)
-    print "Processing ", dataset_name, validation_file_name
+    print ("Processing ", dataset_name, validation_file_name)
     dataset_to_matrix(folder, validation_file_name, ltable_file_name, rtable_file_name)
-    print "Processing ", dataset_name, test_file_name
+    print ("Processing ", dataset_name, test_file_name)
     dataset_to_matrix(folder, test_file_name, ltable_file_name, rtable_file_name)
 
 def convert_csv_to_features(dataset_name, input_file_name):
@@ -182,9 +182,9 @@ def convert_csv_to_features(dataset_name, input_file_name):
     #Check if the npy file already exists
     file_path = os.path.join(folder_path, feature_file_name)
     if os.path.exists(file_path):
-        print "File {} already exists. Reusing it.".format(feature_file_name)
+        print ("File {} already exists. Reusing it.".format(feature_file_name))
     else:
-        print "File {} does not exist. Creating and persisting it.".format(feature_file_name)
+        print ("File {} does not exist. Creating and persisting it.".format(feature_file_name))
         dataset_to_matrix(folder_path, input_file_name, ltable_file_name, rtable_file_name)
     return np.load(file_path)
 
@@ -205,7 +205,7 @@ def get_replacement_list():
     return replacement_list
 
 def load_fasttext_model():
-    return fastText.load_model(configs.FASTTEXT_MODEL_PATH)
+    return fasttext.load_model(configs.FASTTEXT_MODEL_PATH)
 
 def get_folder_to_persist_model(dataset_name):
     dataset = configs.er_dataset_details[dataset_name]
