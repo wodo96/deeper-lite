@@ -11,11 +11,11 @@ DeepER-Lite requires some preliminary configurations for setting up new datasets
 For most of the benchmark datasets used in Entity Resolution, this has already been completed.
 For a new dataset, you would have to do the following one-time setup:
 
-1. Update the DATASET\_ROOT setting in configs.py to the folder in which the datasets are stored.
+1. Update the DATASET_ROOT setting in configs.py to the folder in which the datasets are stored.
 2. Add an entry in config.py about the new dataset. It already has entries for benchmark datasets.
-3. Add a function for blocking in blocking\_utils.py . Functions already exist for known benchmark datasets.
-4. Call the function save\_candset\_wrapper in blocking\_utils.py. It will create a processed version of the candidate set. For benchmark datasets, this is already done.
-5. Call the function split\_dataset\_by\_ratio to generate training, validation and test files. For the benchmark datasets, it is already done. A sample invocation is given in process\_dataset\_sim.py 
+3. Add a function for blocking in blocking_utils.py . Functions already exist for known benchmark datasets. #sono le funzioni che consentono di poter utilizzare il dataset consentono di prendere i dati in modo dettagliato. Es. function "block_dblp_acm(A, B)" riga 113
+4. Call the function save_candset_wrapper in blocking_utils.py. It will create a processed version of the candidate set. For benchmark datasets, this is already done.
+5. Call the function split_dataset_by_ratio to generate training, validation and test files. For the benchmark datasets, it is already done. A sample invocation is given in process_dataset_sim.py 
 
 ## Running DeepER-Lite
 

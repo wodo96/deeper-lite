@@ -2,7 +2,7 @@
 
 #This file mostly exists as centralized config for various datasets and other things.
 
-DATASET_ROOT = "/Users/neo/Downloads/deeper_civilizer/BenchmarkDatasets/"
+DATASET_ROOT = "../../datasets/"
 #Note: This contains also the label data!
 CANDSET_IDS_FILE_NAME = "candset_ids_only.csv"
 
@@ -17,6 +17,8 @@ FASTTEXT_MODEL_PATH = "/Users/neo/Desktop/QCRI/DataCleaning/datasets/Embeddings/
 # 1. id column is always named as "id"
 # 2. all relevant attributes have the same name. any columns without same names will be ignored
 
+
+#those should be the "entry" that readme.me specified on second point.
 er_dataset_details = {
         "Abt_Buy" : {
             "dataset_folder_path" : DATASET_ROOT + "Abt_Buy/",
@@ -44,6 +46,13 @@ er_dataset_details = {
             "ltable_file_name" : "DBLP2.csv",
             "rtable_file_name" : "ACM.csv",
             "golden_label_file_name" : "DBLP-ACM_perfectMapping.csv",
+        },
+
+                "DBLP_ACM_TEST" : {
+            "dataset_folder_path" : DATASET_ROOT + "DBLP_ACM/",
+            "ltable_file_name" : "tableA.csv",
+            "rtable_file_name" : "tableB.csv",
+            "golden_label_file_name" : "DBLP-ACM_perfectMapping.csv", #find the code when this is used
         },
 
         "DBLP_Scholar" : {

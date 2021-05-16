@@ -28,13 +28,13 @@ def get_deeper_lite_model_sim(num_attributes):
     #If there are K input attributes, Deeper Lite  has 2K features : 1 each for cosine distance and normed abs distance
     #Hidden_X is a multiplicative factor controlling the size of hidden layer.
     deeper_lite_model = nn.Sequential(
-        nn.Linear(2 * num_attributes, HIDDEN_X * num_attributes),
+        nn.Linear(int(2 * num_attributes), int(HIDDEN_X * num_attributes)),
         nn.ReLU(),
-        nn.Linear(HIDDEN_X * num_attributes, HIDDEN_X * num_attributes),
+        nn.Linear(int(HIDDEN_X * num_attributes), int(HIDDEN_X * num_attributes)),
         nn.ReLU(),
-        nn.Linear(HIDDEN_X * num_attributes, HIDDEN_X * num_attributes),
+        nn.Linear(int(HIDDEN_X * num_attributes), int(HIDDEN_X * num_attributes)),
         nn.ReLU(),
-        nn.Linear(HIDDEN_X * num_attributes, 2),
+        nn.Linear(int(HIDDEN_X * num_attributes), 2),
     )
 
     return deeper_lite_model
@@ -82,7 +82,7 @@ def train(dataset_name, train_file_name, validation_file_name, model_fn):
                 best_validation_f1_score = validation_f1_score
 
     torch.save(best_model_so_far, model_file_name_path)
-    print "Curr Val F1, Best Val F1 ", validation_f1_score, best_validation_f1_score
+    print ("Curr Val F1, Best Val F1 ", validation_f1_score, best_validation_f1_score)
     return best_model_so_far
 
 def test(dataset_name, test_file_name, test_output_file_name, model_fn):
@@ -120,14 +120,14 @@ def compute_scores(predicted, actual):
     return f1_score(actual_numpy, predicted_numpy)
 
 if __name__ == "__main__":
-    train("Fodors_Zagat", "train.csv", "validation.csv", get_deeper_lite_model_sim)
-    test("Fodors_Zagat", "test.csv", "test_predictions.csv", get_deeper_lite_model_sim)
+    #train("Fodors_Zagat", "train.csv", "validation.csv", get_deeper_lite_model_sim)
+    #test("Fodors_Zagat", "test.csv", "test_predictions.csv", get_deeper_lite_model_sim)
 
-    train("Cora", "train.csv", "validation.csv", get_deeper_lite_model_sim)
-    test("Cora", "test.csv", "test_predictions.csv", get_deeper_lite_model_sim)
+    #train("Cora", "train.csv", "validation.csv", get_deeper_lite_model_sim)
+    #test("Cora", "test.csv", "test_predictions.csv", get_deeper_lite_model_sim)
 
     train("DBLP_ACM", "train.csv", "validation.csv", get_deeper_lite_model_sim)
     test("DBLP_ACM", "test.csv", "test_predictions.csv", get_deeper_lite_model_sim)
 
-    train("DBLP_Scholar", "train.csv", "validation.csv", get_deeper_lite_model_sim)
-    test("DBLP_Scholar", "test.csv", "test_predictions.csv", get_deeper_lite_model_sim)
+    #train("DBLP_Scholar", "train.csv", "validation.csv", get_deeper_lite_model_sim)
+    #test("DBLP_Scholar", "test.csv", "test_predictions.csv", get_deeper_lite_model_sim)

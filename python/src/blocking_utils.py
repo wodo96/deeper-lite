@@ -98,8 +98,8 @@ def verify_blocking_ground_truth(dataset_name, block_df, objectify=False):
     num_duplicates_missed = len(merged_df) - merged_df["_id"].count()
     total_duplicates = len(duplicates_df)
 
-    print "Size of candset =", len(block_df)
-    print "Totally missed:", num_duplicates_missed, " out of ", total_duplicates
+    print ("Size of candset =", len(block_df))
+    print ("Totally missed:", num_duplicates_missed, " out of ", total_duplicates)
 
 
 def block_fodors_zagats(A, B):
